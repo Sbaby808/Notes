@@ -6,7 +6,7 @@
 
 > Github：https://github.com/spring-projects/spring-boot/releases/
 >
-> ![image-20210526190546330](.\001103-992993.png)
+> ![image-20210526190546330](.\\001103-992993.png)
 
 > SpringBoot2.0新特性
 >
