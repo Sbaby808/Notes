@@ -6,27 +6,27 @@
 
 > Github：https://github.com/spring-projects/spring-boot/releases/
 >
-> ![image-20210526190546330](.\\001103-992993.png)
+> ![image-20210526190546330](001103-992993.png)
 
 > SpringBoot2.0新特性
 >
 > Github： https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Release-Notes
 >
-> ![image-20210527001525971](.\001743-857784.png)
+> ![image-20210527001525971](001743-857784.png)
 
 > 查看最新版本：[Spring Boot](https://spring.io/projects/spring-boot#learn)
 >
-> ![image-20210527001800973](.\002022-561188.png)
+> ![image-20210527001800973](002022-561188.png)
 
 ## 2. SpringCloud版本选择
 
 > Github：https://github.com/spring-projects/spring-cloud/wiki
 >
-> ![image-20210527002058016](.\image-20210527002058016.png)
+> ![image-20210527002058016](image-20210527002058016.png)
 >
 > 
 
-> 官网：https://spring.io/projects/spring-cloud ![image-20210527002205453](.\002207-778064.png)
+> 官网：https://spring.io/projects/spring-cloud ![image-20210527002205453](002207-778064.png)
 
 **Spring Cloud版本命名规则**：
 
@@ -38,7 +38,7 @@
 
 > GitHub：https://spring.io/projects/spring-cloud#overview
 >
-> ![image-20210527003215640](.\003221-924710.png)
+> ![image-20210527003215640](003221-924710.png)
 
 > 详细版本对应信息：https://start.spring.io/actuator/info
 >
