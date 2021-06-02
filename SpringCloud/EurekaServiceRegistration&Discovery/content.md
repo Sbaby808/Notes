@@ -142,7 +142,7 @@ instance:
 
 ## 5. Eureka自我保护
 
-### 5.1 什么是Eureka保护模式
+### 5.1 概述
 
 > &emsp;保护模式主要用于一组客户端和Eureka Server之间存在网络分区场景下的保护。
 >
@@ -152,3 +152,47 @@ instance:
 >
 > ![image-20210602074854634](image-20210602074854634.png)
 
+### 5.2 什么是自我保护模式
+
+> **为什么会产生Eureka自我保护机制？**
+>
+> &emsp;为了保证EurekaClient可以正常运行，但是与EurekaServer网络不通情况下，EurekaServer不会立刻将EurekaClient服务删除。
+
+&emsp;默认情况下，如果EurekaServer在一定时间内没有接收到某个微服务实例的心跳，EurekaServer将会注销该实例（默认90秒）。但是当网络分区故障发生（延迟、卡顿、拥挤）时，微服务与EurekaServer之间无法正常通信，以上行为可能变得非常危险了——因为微服务本身是健康的，此时本不应该注销这个微服务。Eureka通过“自我保护模式”来解决这个问题——当EurekaServer节点在短时间内丢失过多客户端时（可能发生了网络分区故障），那么这个节点就会进入自我保护模式。
+
+![image-20210603060435145](image-20210603060435145.png)
+
+<font color="red">&emsp;在自我保护模式中，EurekaServer 会保护服务注册表中的信息，不再注销任何服务实例。</font>
+
+它的设计哲学就是宁可保留错误的服务注册信息，也不盲目注销任何可能健康的服务实例。一句话理解：好死不如赖活着。
+
+综上，自我保护模式是一种应对网络异常的安全保护措施。它的架构哲学是宁可同时保留所有微服务（健康的微服务和不健康的微服务都会保留）也不盲目注销任何健康的微服务。使用自我保护模式，可以让Eureka集群更加的健壮、稳定。
+
+> 属于CAP原则里的AP。
+>
+> [CAP原则_百度百科 (baidu.com)](https://baike.baidu.com/item/CAP原则/5712863?fr=aladdin)
+
+### 5.3 怎样禁止自我保护
+
++ 注册中心配置文件添加：
+
+  ```yaml
+  eureka:
+  	server:
+  		enable-self-preservation: false
+  ```
+
+  
+
++ provider配置文件添加：
+
+  ```yaml
+  eureka:
+  	instance:
+  		#Eureka客户端向服务端发送心跳的时间间隔，单位为秒（默认是30秒）
+  		lease-renewal-interval-in-seconds=30
+  		#Eureka服务端在收到最后一次心跳后等待时间上限，单位为秒（默认是90秒），超时将剔除服务
+  		lease-expiration-duration-in-seconds=90
+  ```
+
+  
