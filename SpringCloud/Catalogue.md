@@ -6,3 +6,5 @@
 
  <a href="./EurekaServiceRegistration&Discovery/content.md">三. Eureka服务注册与发现</a>
 
+ <a href="./ZookeeperServiceRegistration&Discovery/content.md">四. Zookeeper服务注册与发现</a>
+
